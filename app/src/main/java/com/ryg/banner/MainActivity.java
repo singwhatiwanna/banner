@@ -41,7 +41,6 @@ public class MainActivity extends ActionBarActivity implements Runnable {
     private TimerTask mTimerTask = new TimerTask() {
         @Override
         public void run() {
-            Log.d(TAG, "is=" + mIsUserTouched);
             if (!mIsUserTouched) {
                 mBannerPosition++;
                 runOnUiThread(MainActivity.this);
