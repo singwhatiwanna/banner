@@ -42,7 +42,7 @@ public class MainActivity extends ActionBarActivity implements Runnable {
         @Override
         public void run() {
             if (!mIsUserTouched) {
-                mBannerPosition++;
+                mBannerPosition = (mBannerPosition + 1) % FAKE_BANNER_SIZE;
                 runOnUiThread(MainActivity.this);
                 Log.d(TAG, "tname:" + Thread.currentThread().getName());
             }
