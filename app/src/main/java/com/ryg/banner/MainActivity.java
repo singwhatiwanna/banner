@@ -30,6 +30,7 @@ public class MainActivity extends ActionBarActivity implements Runnable {
     private final int FAKE_BANNER_SIZE = 100;
     private final int DEFAULT_BANNER_SIZE = 5;
     private boolean mIsUserTouched = false;
+
     private int[] mImagesSrc = {
             R.mipmap.img1,
             R.mipmap.img2,
@@ -54,7 +55,7 @@ public class MainActivity extends ActionBarActivity implements Runnable {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
-        mTimer.schedule(mTimerTask, 5000, 3000);
+        mTimer.schedule(mTimerTask, 5000, 5000);
     }
 
     private void initView() {
@@ -94,7 +95,11 @@ public class MainActivity extends ActionBarActivity implements Runnable {
 
     @Override
     public void run() {
-        mBanner.setCurrentItem(mBannerPosition);
+        if (mBannerPosition == FAKE_BANNER_SIZE - 1) {
+            mBanner.setCurrentItem(DEFAULT_BANNER_SIZE - 1, false);
+        } else {
+            mBanner.setCurrentItem(mBannerPosition);
+        }
     }
 
     @Override
